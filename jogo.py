@@ -174,11 +174,23 @@ def gerar_combinacao_por_distribuicao(distribuicao_analise, linhas_escolhidas, c
 
 
 def main():
-    caminho_arquivo = 'lotofacil.csv'  # Substitua pelo caminho do seu arquivo
+    caminho_arquivo = '/home/nelson/pagina/lotofacil.csv'  # Substitua pelo caminho do seu arquivo
     df = carregar_dados(caminho_arquivo)
 
     if df is None:
         return
+
+    # Calcular a frequência dos números nos últimos 6 jogos
+    df_ultimos_6 = df.tail(6)
+    frequencia_ultimos_6 = calcular_frequencia_numeros(df_ultimos_6)
+
+    # Obter os números mais e menos frequentes
+    mais_frequentes_ultimos_6 = frequencia_ultimos_6.nlargest(15).index.tolist()
+    menos_frequentes_ultimos_6 = frequencia_ultimos_6.nsmallest(15).index.tolist()
+
+    # Exibir os resultados
+    print("Números Mais Frequentes nos Últimos 6 Jogos:", mais_frequentes_ultimos_6)
+    print("Números Menos Frequentes nos Últimos 6 Jogos:", menos_frequentes_ultimos_6)
 
     frequencia_numeros = calcular_frequencia_numeros(df)
     somas_sorteios = calcular_somas_sorteios(df)

@@ -6,19 +6,19 @@ def gerar_fechamento(grupo_principal, grupo_a, grupo_b, grupo_c):
 
     combinacoes = []
     # Aposta 1
-    combinacao1 = random.sample(grupo_principal, 10) + random.sample(grupo_a, 5)
+    combinacao1 = grupo_principal + random.sample(grupo_a, 5)
     combinacoes.append(sorted(combinacao1))
 
     # Aposta 2
-    combinacao2 = random.sample(grupo_principal, 10) + random.sample(grupo_b, 5)
+    combinacao2 = grupo_principal + random.sample(grupo_b, 5)
     combinacoes.append(sorted(combinacao2))
 
     # Aposta 3
-    combinacao3 = random.sample(grupo_principal, 10) + random.sample(grupo_c, 5)
+    combinacao3 = grupo_principal + random.sample(grupo_c, 5)
     combinacoes.append(sorted(combinacao3))
 
     # Aposta 4
-    combinacao4 = random.sample(grupo_principal, 10) + random.sample(grupo_a+grupo_b+grupo_c,5)
+    combinacao4 = grupo_principal + random.sample(grupo_a+grupo_b+grupo_c,5)
     combinacoes.append(sorted(combinacao4))
 
     return combinacoes
